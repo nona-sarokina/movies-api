@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Movies</title>
+    <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="semantic/semantic.min.js"></script>
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <div class="ui container">
+        <div class="ui link cards">
+            <div class="card" id="add-card">
+
+                <div class="content center aligned">
+                    <div class="ui add-movie">
+                        <i class="add large icon"></i>
+                        <!-- Add -->
+                        <i class="video large icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="movieItemTemplate" style="display: none">
+        <div class="card" id="card" data-movie-id="id">
+            <div class="image">
+                <img class="movie-poster" data-movie-poster="poster url">
+            </div>
+            <div class="content">
+                <div class="header movie-title" data-movie-title="movie title" id="movie-title">Title</div>
+            </div>
+            <div class="extra content">
+                <span class="right floated">
+                    <i class="edit icon"></i>
+                    <i class="trash icon"></i>
+                    <i class="bell icon"></i>
+                    <i class="info icon"></i>
+                </span>
+                <span>
+                    <i class="star icon"></i>
+                    <span class="movie-rating" data-movie-rating="10">10</span>
+                </span>
+            </div>
+            <div class="ui popup">
+                <div class="movie-description" data-movie-description="Movie description">Description
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="ui modal add"> <i class="close icon"></i>
+        <div class="header">Add Movie</div>
+        <div class="content">
+
+            <form method="put" class="ui form" id="add-movie-form" action="">
+                <div class="field">
+                    <label>Title</label>
+                    <input class="movie-title-input" type="text" name="title" placeholder="Title">
+                </div>
+                <div class="field">
+                    <label>Description</label>
+                    <textarea class="movie-description-input" rows="2"></textarea>
+                </div>
+                <div class="field">
+                    <label>Image link</label>
+                    <input class="movie-poster-input" type="text" name="Image" placeholder="Image link">
+                </div>
+                <div class="field">
+                    <label>Rating</label>
+                    <input class="movie-rating-input" type="number" min="0" max="10" step="0.1" name="Rating"
+                        placeholder="Rating">
+                </div>
+                <button class="ui button add-button" type="submit">Save</button>
+            </form>
+        </div>
+
+
+    </div>
+
+    <div class="ui basic mini modal delete">
+        <div class="ui icon header">
+            <i class="archive icon"></i>
+            Delete movie
+        </div>
+        <div class="content">
+            <p>Are you sure want to delete it?</p>
+        </div>
+        <div class="actions">
+            <div class="ui red basic cancel inverted button">
+                <i class="remove icon"></i>
+                No
+            </div>
+            <div class="ui green ok inverted button delete-movie">
+                <i class="checkmark icon"></i>
+                Yes
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="ui modal edit"> <i class="close icon"></i>
+        <div class="header">Modal Title</div>
+        <div class="content">
+
+            <form method="put" class="ui form" id="update-movie-form" action="">
+                <div class="field">
+                    <label>Title</label>
+                    <input class="movie-title-input" type="text" name="title" placeholder="Title">
+                </div>
+                <div class="field">
+                    <label>Description</label>
+                    <textarea class="movie-description-input" rows="2"></textarea>
+                </div>
+                <div class="field">
+                    <label>Image link</label>
+                    <input class="movie-poster-input" type="text" name="Image" placeholder="Image link">
+                </div>
+                <div class="field">
+                    <label>Rating</label>
+                    <input class="movie-rating-input" type="number" min="0" max="10" step="0.1" name="Rating"
+                        placeholder="Rating">
+                </div>
+                <button class="ui button update-button" type="submit">Save</button>
+            </form>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
