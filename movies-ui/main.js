@@ -23,7 +23,9 @@ window.onload = function () {
 
             $('.trash.icon').each(function () {
                 $(this).click(function () {
+                    var id = $(this).parents('.card').attr("data-movie-id");
                     $('.ui.modal.delete').modal("show");
+                    $('.delete-movie').attr("data-movie-id", id);
                 });
             });
 
@@ -32,11 +34,12 @@ window.onload = function () {
             });
 
             $(".delete-movie").click(function() {
-                var id = $(this).parents('.card').attr("data-movie-id");
+                var id = $(this).attr("data-movie-id");
                 $.ajax({
                     type: "DELETE",
                     url: baseUrl + "/" + id,
                     success: function () {
+                        $("#card-" + id).remove();
                     },
                     failure: function () {
                         console.log("fail");
@@ -51,6 +54,7 @@ window.onload = function () {
 function fillMovieTemplate(baseUrl, target) {
     return function (key, value) {
         var template = $("#movieItemTemplate").clone();
+        template.find(".card").attr("data-movie-id", value.id).attr("id", "card-" + value.id);
         template.find(".movie-title").text(value.title).attr("data-movie-title", value.title);
         template.find(".movie-poster").attr("src", value.posterUrl).attr("data-movie-poster", value.posterUrl);
         template.find(".movie-rating").text(value.imdbRating).attr("data-movie-rating", value.imdbRating);
