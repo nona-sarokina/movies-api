@@ -67,7 +67,7 @@ function fillMovieTemplate(baseUrl, target) {
         const form = template.find("#update-movie-form");
         form.attr("id", "update-movie-form" + value.id);
         form.attr("action", baseUrl + "/" + value.id);
-        template.find(".header").text(value.title + " update");
+        template.find(".header").text(value.title);
         template.find(".movie-title-input").attr("value", value.title);
         template.find(".movie-poster-input").attr("value", value.posterUrl);
         template.find(".movie-rating-input").attr("value", value.imdbRating);
