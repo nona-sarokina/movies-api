@@ -56,6 +56,14 @@ function fillMovieTemplate(baseUrl, target) {
         template.find(".movie-rating").text(value.imdbRating).attr("data-movie-rating", value.imdbRating);
         template.find(".movie-description").text(value.description).attr("data-movie-description", value.description);
 
+        var genres = [];
+        
+        if (!!value.genres) {
+            value.genres.forEach(e=>genres.push(e.name));
+        }
+        template.find(".movie-genre").text(genres.join(", "));
+        
+
         const form = template.find("#update-movie-form");
         form.attr("id", "update-movie-form" + value.id);
         form.attr("action", baseUrl + "/" + value.id);
